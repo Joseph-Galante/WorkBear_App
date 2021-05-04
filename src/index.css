@@ -1,0 +1,458 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.mainPage {
+  background-image: url(https://i.imgur.com/LPEeju6.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 99%;
+  height: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cancelComment, #cancelTask {
+  background-color: whitesmoke;
+}
+#cancelComment:hover, #cancelTask:hover {
+  background-color: black;
+}
+#writeComment, #addTask {
+  background-color: dodgerblue;
+}
+#writeComment:hover, #addTask:hover {
+  background-color: black;
+}
+
+#assignSelf {
+  color: dodgerblue;
+}
+#assignSelf:hover {
+  color: white;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+  margin: 7px;
+  border-radius: 3%;
+}
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 85%;
+}
+input[type=password] {
+  background-color: #f1f1f1;
+  width: 85%;
+}
+input[type=submit] {
+  background-color: dodgerblue;
+  color: #000;
+  border-radius: 12%;
+}
+input[type=button] {
+  background-color: transparent;
+  color: navy;
+  /* border-radius: 12%; */
+  text-decoration: underline;
+}
+input[type=submit]:hover {
+  cursor: pointer;
+  color: whitesmoke;
+  background-color: #003152;
+}
+input[type=button]:hover {
+  cursor: pointer;
+  color: whitesmoke;
+  /* background-color: #003152; */
+}
+
+.success {
+  color: green;
+  background-color: white;
+  border-radius: 3%;
+  border: 2px solid green;
+  padding: 8px;
+  width: 90%;
+  margin: 10px;
+  position: absolute;
+  top: 60px;
+  z-index: 1;
+}
+.failure {
+  color: red;
+  background-color: white;
+  border-radius: 3%;
+  border: 2px solid red;
+  padding: 8px;
+  width: 90%;
+  margin: 10px;
+  position: absolute;
+  top: 60px;
+  z-index: 1;
+}
+
+nav {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  background-image: url(https://i.imgur.com/CAUKZUj.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 99%;
+  height: 99px;
+}
+
+.navLeft {
+  color: brown;
+  position: absolute;
+  left: 10px;
+  top: 25px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.navRight {
+  color: brown;
+  position: absolute;
+  right: 10px;
+  top: 25px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+label {
+  display: flex;
+  margin: 7px 7px 7px 24px;
+  font: 16px sans-serif;
+}
+
+a {
+  color: whitesmoke;
+  text-decoration: none;
+  background-image: url(https://i.imgur.com/y3P4hfM.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 6px;
+  margin: 5px;
+  border-radius: 8%;
+}
+
+.welcomeSign {
+  background-color: chocolate;
+  color: whitesmoke;
+  padding: 1px 30px 1px 30px;
+  margin: 15px;
+  border-radius: 7%;
+}
+
+.signupPage, .loginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 99%;
+  height: 800px;
+  border-radius: 3%;
+}
+.signupForm, .loginForm {
+  display: flex;
+  flex-direction: column;
+  color: whitesmoke;
+  background-color: chocolate;
+  padding: 10px;
+  width: 30%;
+  height: auto;
+  position: absolute;
+  top: 13%;
+  border-radius: 3%;
+}
+
+.profilePage {
+  background-color: chocolate;
+  color: whitesmoke;
+  width: 80%;
+  height: 90%;
+  margin: 30px 0 0 0;
+  border-radius: 3%;
+  display: flex;
+  align-items: center;
+}
+.profileMenu {
+  border-right: 2px solid whitesmoke;
+  width: 15%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menuItem {
+  border: 2px solid whitesmoke;
+  border-radius: 2%;
+  width: 85%;
+  height: 7.5%;
+  margin: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menuItem:hover {
+  cursor: pointer;
+}
+
+
+.profileDisplay {
+  border: 2px solid whitesmoke;
+  border-radius: 2%;
+  width: 75%;
+  height: 90%;
+  margin: 0 0 0 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileInfo {
+  width: 40%;
+  height: 20%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 20px;
+}
+#editInfo {
+  width: 7%;
+}
+
+.projectInfo {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userProject {
+  border: 2px solid whitesmoke;
+  border-radius: 2%;
+  width: 85%;
+  height: 7.5%;
+  margin: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+}
+.userProject:hover {
+  cursor: pointer;
+}
+.userProjectProfile, .userTaskProfile, .task, .invite {
+  border: 2px solid whitesmoke;
+  border-radius: 2%;
+  width: 90%;
+  height: 7.5%;
+  margin: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.userProjectProfile:hover, .userTaskProfile:hover, .task:hover {
+  cursor: pointer;
+}
+
+.task {
+  border: none;
+  border-radius: 3%;
+  background-color: black;
+  width: 95%;
+  height: 40px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.projectsPage, .projectDetailsPage, .taskDetailsPage, .invitePage {
+  display: flex;
+  justify-content: center;
+  color: whitesmoke;
+  background-color: chocolate;
+  padding: 20px;
+  width: 50%;
+  height: auto;
+  position: absolute;
+  top: 13%;
+  border-radius: 3%;
+}
+.myProjects, .createProject {
+  border: 2px solid whitesmoke;
+  border-radius: 2%;
+  width: 45%;
+  height: 90%;
+  margin: 0 2% 0 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.dueDateSpan {
+  display: flex;
+}
+input[type=number] {
+  width: 40px;
+}
+
+.projectDetails {
+  border: 2px solid whitesmoke;
+  border-radius: 3%;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.collabSection {
+  border: 2px solid whitesmoke;
+  border-radius: 2%;
+}
+
+.taskSection, .inviteDetails, .taskDetails {
+  border: 2px solid whitesmoke;
+  border-radius: 2%;
+  width: 90%;
+  height: 90%;
+  margin: 0 2% 0 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+#backToProject, #backToProjectFromTask {
+  background-color: whitesmoke;
+  border-radius: 12%;
+  text-decoration: none;
+  position: relative;
+  right: 40%;
+  z-index: 2;
+}
+#backToProject:hover, #backToProjectFromTask:hover {
+  background-color: black;
+}
+
+.inviteInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.invite {
+  background-color: whitesmoke;
+  color: black;
+  padding: 25px;
+  width: 80%;
+}
+.replyChoices {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+#replyAccept {
+  background-color: forestgreen;
+}
+#replyDecline {
+  background-color: red;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.commentsBar, .collabBar, .tasksBar {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+#commentDescription {
+  font: 20px sans-serif;
+  border: none;
+  border-radius: 3%;
+  resize: none;
+}
+
+.comment {
+  border: 2px solid whitesmoke;
+  padding: 10px;
+  width: 100%;
+  margin: 5px;
+}
+.commentStamp {
+  position: relative;
+  top: -12px;
+  left: -12px;
+  border: 2px solid whitesmoke;
+  width: 109%;
+  text-align: start;
+  text-indent: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.commentStampName {
+  position: relative;
+  left: -40px;
+}
+.commentStampTime {
+  position: relative;
+  right: -30px;
+}
+
+.task {
+  padding: 20px;
+}
+.taskSection {
+  border: 2px solid whitesmoke;
+  border-radius: 3%;
+}
+.taskList {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.taskStamp {
+  position: relative;
+  right: 73px;
+  top: -20px;
+  border-bottom: 2px solid whitesmoke;
+  width: 190%;
+  text-align: start;
+  text-indent: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
