@@ -45,7 +45,7 @@ const Signup = () =>
         }).catch((error) =>
         {
             console.log(error.message);
-            if (error.message === 'Request failed with status code 409.')
+            if (error.message === 'Request failed with status code 409')
             {
                 displayMessage(false, 'Email already taken. Enter a different one or login with your password.')
             }
