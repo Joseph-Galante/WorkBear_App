@@ -19,6 +19,9 @@ const Signup = () =>
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
+    // on component load
+    useEffect(clearMessage, []);
+
     // functions
     const handleSubmit = (e) =>
     {
@@ -42,6 +45,10 @@ const Signup = () =>
         }).catch((error) =>
         {
             console.log(error.message);
+            if (error.message === 'Request failed with status code 409.')
+            {
+                displayMessage(false, 'Email already taken. Enter a different one or login with your password.')
+            }
         })
     }
 

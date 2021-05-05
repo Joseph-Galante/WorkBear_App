@@ -17,6 +17,9 @@ const Login = () =>
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    // on component load
+    useEffect(clearMessage, []);
+
     // functions
     const handleSubmit = (e) =>
     {
