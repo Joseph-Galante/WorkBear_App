@@ -125,7 +125,7 @@ nav {
   /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
-  background-image: url(https://i.imgur.com/CAUKZUj.png);
+  background-image: url(https://i.imgur.com/eA8zT4i.png);
   background-repeat: no-repeat;
   background-size: contain;
   width: 99%;
@@ -135,16 +135,16 @@ nav {
 .navLeft {
   color: brown;
   position: absolute;
-  left: 10px;
-  top: 25px;
+  left: 20px;
+  top: 35px;
   font-size: 20px;
   font-weight: bolder;
 }
 .navRight {
   color: brown;
   position: absolute;
-  right: 10px;
-  top: 25px;
+  right: 20px;
+  top: 35px;
   font-size: 20px;
   font-weight: bolder;
 }
