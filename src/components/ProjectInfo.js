@@ -46,7 +46,7 @@ const ProjectInfo = () =>
             <h1 className="profileHeader">Projects</h1>
             <span>------------------------------------------------------</span>
             <div className="projectInfo">
-                {projects ? projects : <span>Getting projects...</span>}
+                {projects ? projects.length === 0 ? 'No Projects' : projects : <span>Getting projects...</span>}
             </div>
         </div>
     )

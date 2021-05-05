@@ -22,7 +22,7 @@ const InviteInfo = () =>
     {
         axios.get(`${env.BACKEND_URL}/users/invites`, { headers: { Authorization: user.id }}).then(res =>
         {
-            console.log(res);
+            // console.log(res);
             setInvites(res.data.invites);
         })
     }
