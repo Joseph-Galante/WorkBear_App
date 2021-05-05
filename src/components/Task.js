@@ -44,9 +44,9 @@ const Task = (props) =>
                         <span>Assigned to: </span>
                         {
                         user.email === props.users[0].email ?
-                            <Dropdown className="assignDropdown" options={props.users ? props.users.map(user => {return `${user.name}`}) : 'TBD'} onChange={(e) => {assignTask(e.value)}} value={props.task.user ? props.task.user.name : assigned.name} placeholder='TBD' />
+                            <Dropdown className="assignDropdown" options={props.users ? props.users.map(user => {return `${user.email}`}) : 'TBD'} onChange={(e) => {assignTask(e.value)}} value={props.task.user ? props.task.user.email : assigned.email} placeholder='TBD' />
                         :
-                            props.task.user ? props.task.user.name :
+                            props.task.user ? props.task.user.email :
                             <input type="button" id="assignSelf" value="Assign Self" onClick={() => {assignTask(user.email)}}/>
                         }
                     </span>

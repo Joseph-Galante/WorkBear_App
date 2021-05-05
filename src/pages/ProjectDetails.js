@@ -43,7 +43,7 @@ const ProjectDetails = (props) =>
 
         axios.post(`${env.BACKEND_URL}/projects/${project.id}/collaborators`, { email: email, message: `${user.name} has invited you to work on ${project.title}` }, { headers: { Authorization: user.id } }).then((res) =>
         {
-            console.log(res);
+            // console.log(res);
             displayMessage(true, 'Collaboration invite sent.');
             getProjectDetails();
             setInviting(false);
@@ -59,6 +59,11 @@ const ProjectDetails = (props) =>
             if (error.message === 'Request failed with status code 401')
             {
                 displayMessage(false, 'You must own the project to invite collaborators.');
+            }
+            // check if user tried to invite a non-existent user
+            if (error.message === 'Request failed with status code 400')
+            {
+                displayMessage(false, 'No user with the email provided exists.');
             }
         })
     }
@@ -117,7 +122,7 @@ const ProjectDetails = (props) =>
                             <div className="taskSection">
                             {
                                 tasking ? 
-                                    <form>
+                                    <form key="taskForm" onSubmit={addTask}>
                                         <div key="taskDescription">
                                             <input type="text" id="taskDescription" value={description} placeholder="Task" onChange={(e) => {setDescription(e.target.value)}}/>
                                         </div>
@@ -129,8 +134,8 @@ const ProjectDetails = (props) =>
                                                 <input key="dueDateYear" type="number" value={year} placeholder="YY" min={21} max={99} maxLength={2} onChange={(e) => {setYear(e.target.value)}}/>
                                             </span>
                                         </div>
-                                        <input type="submit" id="cancelTask" value="Cancel" onClick={() => {setDescription(''); setTasking(false)}} />
-                                        <input type="submit" id="addTask" value="Add Task" onClick={addTask} />
+                                        <input type="button" id="cancelTask" value="Cancel" onClick={() => {setDescription(''); setTasking(false)}} />
+                                        <input type="submit" id="addTask" value="Add Task" />
                                     </form>
                                     :
                                     <>
