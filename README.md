@@ -1,1 +1,1 @@
-# WorkBear_App
+# WorkBear - Project Management App
