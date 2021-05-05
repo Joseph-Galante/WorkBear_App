@@ -10,7 +10,7 @@ const Projects = () =>
     // contexts
     const { userState } = useContext(UserContext);
     const [ user, setUser ] = userState;
-    const { messageState, clearMessage } = useContext(MessageContext);
+    const { displayMessage, clearMessage } = useContext(MessageContext);
 
     // states
     const [projects, setProjects] = useState(null);
@@ -42,16 +42,18 @@ const Projects = () =>
     }
     useEffect(getMyProjects, []);
 
-    const createProject = () =>
+    const createProject = (e) =>
     {
+        e.preventDefault();
         // create project
         axios.post(`${env.BACKEND_URL}/projects`, {
             title, description, dueDate: `${month}-${day}-${year}`
         }, { headers: { Authorization: user.id }}).then((res) =>
         {
-            console.log(res);
+            // console.log(res);
             // refresh my project list
             getMyProjects();
+            displayMessage(true, `${title} created successfully.`);
         }).catch((error) => console.log(error.message));
     }
 
