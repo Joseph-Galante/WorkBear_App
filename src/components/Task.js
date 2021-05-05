@@ -26,7 +26,7 @@ const Task = (props) =>
     {
         axios.post(`${env.BACKEND_URL}/tasks/${props.task.id}/assign`, { email: email }, { headers: { Authorization: user.id }}).then((res) =>
         {
-            console.log(res);
+            // console.log(res);
             setAssigned(email);
             displayMessage(true, `${email} has been assigned to task successfully.`);
             props.getProject();
@@ -44,7 +44,7 @@ const Task = (props) =>
                         <span>Assigned to: </span>
                         {
                         user.email === props.users[0].email ?
-                            <Dropdown options={props.users ? props.users.map(user => {return `${user.name}`}) : 'TBD'} onChange={(e) => {assignTask(e.value)}} value={props.task.user ? props.task.user.name : assigned.name} placeholder='TBD' />
+                            <Dropdown className="assignDropdown" options={props.users ? props.users.map(user => {return `${user.name}`}) : 'TBD'} onChange={(e) => {assignTask(e.value)}} value={props.task.user ? props.task.user.name : assigned.name} placeholder='TBD' />
                         :
                             props.task.user ? props.task.user.name :
                             <input type="button" id="assignSelf" value="Assign Self" onClick={() => {assignTask(user.email)}}/>

@@ -31,7 +31,7 @@ const TaskInfo = () =>
             {
                 return (
                     <div key={task.id} className="userTaskProfile" onClick={() => {setShouldRedirect(task.id)}}>
-                        <span>{task.description} | Due: {task.dueDate}</span>
+                        <span>{task.description} | Due: {task.dueDate === null ? 'TBD' : task.dueDate === '' ? 'TBD' : task.dueDate}</span>
                     </div>
                 )
             })

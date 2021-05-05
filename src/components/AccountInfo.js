@@ -27,9 +27,17 @@ const AccountInfo = () =>
             // console.log(res);
             setUser({ id: res.data.user.id, name: res.data.user.name, email: res.data.user.email });
             localStorage.setItem('userId', res.data.user.id);
-        }).catch((error) => console.log(error.message));
-        setEditing(false);
-        displayMessage(true, 'Profile updated successfully.');
+            setEditing(false);
+            displayMessage(true, 'Profile updated successfully.');
+        }).catch((error) => 
+        {
+            console.log(error.message);
+            // check if error is conflict for duplicate emails
+            if (error.message === 'Request failed with status code 409')
+            {
+                displayMessage(false, 'A user with that email already exists. Enter a different email and try again.')
+            }
+        });
     }
     const cancelChanges = () =>
     {
@@ -52,8 +60,8 @@ const AccountInfo = () =>
                         <br></br>
                         <input key="email-input" className="info-input" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                         <div className="change-buttons">
-                            <input key="cancel-changes" type="button" id="cancel-changes" value="Cancel Changes" onClick={() => cancelChanges()}/>
                             <input key="save-changes" type="button" id="save-changes" value="Save Changes" onClick={() => saveChanges()}/>
+                            <input key="cancel-changes" type="button" id="cancel-changes" value="Cancel Changes" onClick={() => cancelChanges()}/>
                         </div>
                     </div>
                     :

@@ -19,6 +19,9 @@ const ProjectDetails = (props) =>
     const [inviting, setInviting] = useState(false);
     const [tasking, setTasking] = useState(false);
     const [description, setDescription] = useState('');
+    const [month, setMonth] = useState(1);
+    const [day, setDay] = useState(1);
+    const [year, setYear] = useState(21);
 
     // on component load
     useEffect(clearMessage, []);
@@ -52,6 +55,11 @@ const ProjectDetails = (props) =>
             {
                 displayMessage(false, 'User has already been invited to this project.');
             }
+            // check if user tried to invite a user to an unowned project
+            if (error.message === 'Request failed with status code 401')
+            {
+                displayMessage(false, 'You must own the project to invite collaborators.');
+            }
         })
     }
 
@@ -59,7 +67,7 @@ const ProjectDetails = (props) =>
     {
         e.preventDefault();
         // console.log(description);
-        axios.post(`${env.BACKEND_URL}/projects/${project.id}/tasks`, { description }, { headers: { Authorization: user.id }}).then(res =>
+        axios.post(`${env.BACKEND_URL}/projects/${project.id}/tasks`, { description: description, dueDate: `${month}-${day}-${year}` }, { headers: { Authorization: user.id }}).then(res =>
         {
             console.log(res);
             getProjectDetails();
@@ -86,19 +94,19 @@ const ProjectDetails = (props) =>
             :
             <div className="projectDetails">
                 {project ?
-                    <div>
+                    <div className="projectDisplay">
                         {/* {console.log(project)} */}
                         <h1>{project.title}</h1>
-                        <h3>{project.description} | Due: {project.dueDate ? project.dueDate : 'TBD'}</h3>
+                        <span>----------------------------------------------------------------------------------------------------------------------------------------</span>
+                        <h3>{project.description}</h3>
+                        <h3>Due: {project.dueDate ? project.dueDate : 'TBD'}</h3>
                         <div className="collaborators">
                             <span className="collabBar">
                                 <h2>Collaborators:</h2>
-                                <input type="button" value="Add Collaborator" onClick={() => {setInviting(true)}}/>
+                                {project.users ? user.email === project.users[0].email ? <input type="button" value="Add Collaborator" onClick={() => {setInviting(true)}}/> : null : null}
                             </span>
                             <div className="collabSection">
-                                <div className="collaborator">
-                                    <h4>{project.users ? project.users.map((user) => {return (<div key={user.id}>{user.name}<br></br></div>)}) : null}</h4>
-                                </div>
+                                    <h4 className="collabNames">{project.users ? project.users.map((u) => {return (<span className="collaborator" key={u.id}>{u.name === user.name ? `${u.name} (you)` : u.name}</span>)}) : null}</h4>
                             </div>
                         </div>
                         <div className="tasks">
@@ -112,6 +120,14 @@ const ProjectDetails = (props) =>
                                     <form>
                                         <div key="taskDescription">
                                             <input type="text" id="taskDescription" value={description} placeholder="Task" onChange={(e) => {setDescription(e.target.value)}}/>
+                                        </div>
+                                        <div key="taskDueDate">
+                                            <label  className="addTaskLabel" htmlFor="taskDueDate">Due Date (MM-DD-YY):</label>
+                                            <span className="dueDateSpan">
+                                                <input key="dueDateMonth" type="number" value={month} placeholder="MM" min={1} max={12} maxLength={2} onChange={(e) => {setMonth(e.target.value)}}/>
+                                                <input key="dueDateDay" type="number" value={day} placeholder="DD" min={1} max={31} maxLength={2} onChange={(e) => {setDay(e.target.value)}}/>
+                                                <input key="dueDateYear" type="number" value={year} placeholder="YY" min={21} max={99} maxLength={2} onChange={(e) => {setYear(e.target.value)}}/>
+                                            </span>
                                         </div>
                                         <input type="submit" id="cancelTask" value="Cancel" onClick={() => {setDescription(''); setTasking(false)}} />
                                         <input type="submit" id="addTask" value="Add Task" onClick={addTask} />

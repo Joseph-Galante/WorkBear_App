@@ -51,7 +51,7 @@ const Projects = () =>
         {
             console.log(res);
             // refresh my project list
-            // getMyProjects();
+            getMyProjects();
         }).catch((error) => console.log(error.message));
     }
 

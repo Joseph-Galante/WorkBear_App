@@ -66,7 +66,7 @@ const TaskDetails = (props) =>
                     <div>
                         {/* {console.log(task)} */}
                         <h3>{task.description} | Due: {task.dueDate ? task.dueDate : 'TBD'}</h3>
-                        <h5>Assigned to: {task.user ? task.user.name : 'TBD'}</h5>
+                        <h5>Assigned to: {task.user ? task.user.email === user.email ? `${task.user.name} (you)` : task.user.name : 'TBD'}</h5>
                         <h5>{task.completed ? 'Completed' : <span>Incomplete <input type="button" value="Mark As Complete" onClick={completeTask}/></span>}</h5>
                         <div className="comments">
                             <span className="commentsBar">
