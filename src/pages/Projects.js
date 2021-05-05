@@ -21,6 +21,9 @@ const Projects = () =>
     const [day, setDay] = useState(1);
     const [year, setYear] = useState(21);
 
+    // on component load
+    useEffect(clearMessage, []);
+
     // functions
     // get user's projects
     const getMyProjects = () =>
