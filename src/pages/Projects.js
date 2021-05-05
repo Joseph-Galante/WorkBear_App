@@ -63,7 +63,7 @@ const Projects = () =>
             <div key="myProjects" className="myProjects">
                 <h1>My Projects</h1>
                 <span>----------------------------------------------------------------------------</span>
-                {projects}
+                {projects ? projects.length === 0 ? 'No projects. Start one on the right!' : projects : null}
             </div>
             <div key="createProject" className="createProject">
                 <h1>Start A New Project</h1>
