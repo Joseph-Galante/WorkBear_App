@@ -60,6 +60,11 @@ const ProjectDetails = (props) =>
             {
                 displayMessage(false, 'You must own the project to invite collaborators.');
             }
+            // check if user tried to invite a non-existent user
+            if (error.message === 'Request failed with status code 400')
+            {
+                displayMessage(false, 'No user with the email provided exists.');
+            }
         })
     }
 
